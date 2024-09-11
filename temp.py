@@ -2,8 +2,10 @@ import pickle
 import os
 import matplotlib.pyplot as plt
  
+path = os.path.join(os.getcwd(), "long_mesh")
+# path = os.path.join(os.getcwd(), "fine_mesh")
 def print_seperate(): 
-	path=os.path.join(os.getcwd(),"fine_mesh")
+	global path
 	files=os.listdir(path)
 	for filename in files:
 		if filename[-4:]!=".pkl": continue
@@ -25,7 +27,7 @@ def print_seperate():
 			plt.close()
 
 def print_together():
-	path=os.path.join(os.getcwd(),"fine_mesh")
+	global path
 	files=os.listdir(path)
 	plt.figure(figsize = (10,6))
 	for filename in files:

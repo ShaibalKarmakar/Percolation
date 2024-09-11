@@ -77,7 +77,7 @@ def process_far_point(p, n_max, trials, filepath, process_id):
 def compile_all_data(p, n_max, num_processes, sub_filepath, final_filepath, trials):
     time.sleep(5)
     while(True):
-        hit_rec = { "p":p, "trials_done":0}
+        hit_rec = { "p":p, "trials_done":0, "files_accessed":0}
         for i in range(1, n_max+1):
             hit_rec[i] = 0  
 
@@ -88,28 +88,29 @@ def compile_all_data(p, n_max, num_processes, sub_filepath, final_filepath, tria
             hit_rec["trials_done"] += sub_hit_rec["trials_done"]
             for j in range(1, n_max+1):
                 hit_rec[j] += sub_hit_rec[j]
-            
-            with open(final_filepath, "wb") as gp:
-                pickle.dump(hit_rec, gp)
+            hit_rec["files_accessed"] += 1
 
-            if hit_rec["trials_done"] >= trials:
-                return
+        with open(final_filepath, "wb") as gp:
+            pickle.dump(hit_rec, gp)
+
+        if hit_rec["trials_done"] >= trials:
+            return
             
-            time.sleep(5)
+        time.sleep(5)
 
 
                 
-if __name__ == "__main__":
+def main(p, n_max, test_folder, mesh_folder):
     # p_range = np.linspace(0.24, 0.25, 20)
-    p = 0.2485 
-    n_max = 25
+    #p = 0.2485 
+    #n_max = 30
     trials = 10000 # should be divisible by 'num_processes'
-    num_processes = 20
+    num_processes = 10
     hit_rec = { "p":p, "trials_done":0}
     for i in range(1, n_max+1):
         hit_rec[i] = 0
-    sub_filepath = os.path.join(os.getcwd(), "test2", f"p={p}_record")
-    final_filepath = os.path.join(os.getcwd(), "fine_mesh", f"p={p}_record.pkl")
+    sub_filepath = os.path.join(os.getcwd(), test_folder, f"p={p}_record")
+    final_filepath = os.path.join(os.getcwd(), mesh_folder, f"p={p}_record.pkl")
 
     processes = []
     for i in range(num_processes):
@@ -121,6 +122,10 @@ if __name__ == "__main__":
     
     for i, process in enumerate(processes):
         process.join()
-        print(f"Process {i} finished")
+        print(f"Process {i} finished for p={p}")
         
     print("Finshed")
+
+
+if __name__ == "__main__":
+    main(p = 0.2485)
