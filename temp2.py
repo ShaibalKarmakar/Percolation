@@ -41,6 +41,10 @@ for folder in folders:
 
 
 
+# Save the data
+with open(os.path.join(dest_folder_path, "record.pkl"), "wb") as gp:
+    pickle.dump(rec, gp)
+
 # print completed trials info
 
 for n_max in rec.keys():
