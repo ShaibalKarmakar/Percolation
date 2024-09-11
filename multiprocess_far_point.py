@@ -74,8 +74,8 @@ def process_far_point(p, n_max, trials, filepath, process_id):
         with open(new_filepath, "wb") as fp:
             pickle.dump(sub_hit_rec, fp)
 
-def compile_all_data(p, n_max, num_processes, sub_filepath, final_filepath, trials):
-    time.sleep(5)
+def compile_all_data(p, n_max, num_processes, sub_filepath, final_filepath, trials, sleep_time= 5):
+    time.sleep(sleep_time)
     while(True):
         hit_rec = { "p":p, "trials_done":0, "files_accessed":0}
         for i in range(1, n_max+1):
@@ -124,6 +124,7 @@ def main(p, n_max, test_folder, mesh_folder):
         process.join()
         print(f"Process {i} finished for p={p}")
         
+    compile_all_data(p, n_max, num_process, sub_filepath, final_filepath, trials, 0)
     print("Finshed")
 
 
