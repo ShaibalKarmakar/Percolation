@@ -2,7 +2,7 @@ import pickle
 import os
 import matplotlib.pyplot as plt
  
-path = os.path.join(os.getcwd(), "long_mesh")
+path = os.path.join(os.getcwd(), "fine_long_mesh")
 # path = os.path.join(os.getcwd(), "fine_mesh")
 def print_seperate(): 
 	global path
