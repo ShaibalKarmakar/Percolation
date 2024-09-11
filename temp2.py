@@ -8,5 +8,6 @@ done = 0
 for file_ in files:
     with open(os.path.join(path, file_), "rb") as fp:
         a = dict(pickle.load(fp))
-        done += a["trials_done"]
+        if a["p"] == 0.24:
+            done += a["trials_done"]
 print(done)
