@@ -1,5 +1,6 @@
 import os
 import pickle
+import numpy as np
 import matplotlib.pyplot as plt
 
 # Collect all data
@@ -56,7 +57,7 @@ for n_max in rec.keys():
         
 
 # creating relevent plots
-
+epsilon = 1e-9
 for n_max in rec.keys():
     plt.figure(figsize = (10,6), dpi = 300)
     plt.title(f"n_max = {n_max}")
