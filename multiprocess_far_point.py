@@ -115,7 +115,7 @@ def main(p, n_max, test_folder, mesh_folder):
     processes = []
     for i in range(num_processes):
         processes.append(multiprocessing.Process(target = process_far_point, args = (p, n_max, trials//num_processes, sub_filepath, i)))
-    processes.append(multiprocessing.Process(target = compile_all_data, args = (p, n_max, num_processes, sub_filepath, final_filepath, trials)))
+    # processes.append(multiprocessing.Process(target = compile_all_data, args = (p, n_max, num_processes, sub_filepath, final_filepath, trials)))
     
     for process in processes:
         process.start()
@@ -124,7 +124,7 @@ def main(p, n_max, test_folder, mesh_folder):
         process.join()
         print(f"Process {i} finished for p={p}")
         
-    compile_all_data(p, n_max, num_process, sub_filepath, final_filepath, trials, 0)
+    compile_all_data(p, n_max, num_processes, sub_filepath, final_filepath, trials, 0)
     print("Finshed")
 
 

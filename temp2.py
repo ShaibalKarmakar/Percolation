@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 # Collect all data
 
-folders = ["test", "test2", "test3", "test4", "test5"]
+folders = ["test", "test2", "test3", "test4", "test5", "test6"]
 dest_folder_path = os.path.join(os.getcwd(), "all_record")
 rec = {}
 
