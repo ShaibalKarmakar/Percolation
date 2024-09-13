@@ -100,12 +100,12 @@ def compile_all_data(p, n_max, num_processes, sub_filepath, final_filepath, tria
 
 
                 
-def main(p, n_max, test_folder, mesh_folder):
+def main(p, n_max, trials, num_processes, test_folder, mesh_folder):
     # p_range = np.linspace(0.24, 0.25, 20)
     #p = 0.2485 
     #n_max = 30
-    trials = 10000 # should be divisible by 'num_processes'
-    num_processes = 10
+    # trials = 10000 # should be divisible by 'num_processes'
+    # num_processes = 10
     hit_rec = { "p":p, "trials_done":0}
     for i in range(1, n_max+1):
         hit_rec[i] = 0
