@@ -9,4 +9,4 @@ p_sparsh_mesh = [0.20, 0.21, 0.22, 0.23, 0.24, 0.25]
 p_long = [0.24, 0.25]
 p_ultrafine_mesh = [0.2485, 0.249]
 for p in p_ultrafine_mesh:
-    mfp.main(p, n_max = 125, trials = 1000, num_processes = 5, test_folder = "test7", mesh_folder = "ultrafine_ultralong_mesh")
+    mfp.main(p, n_max = 150, trials = 1000, num_processes = 5, test_folder = "test8", mesh_folder = "ultrafine_ultralong2_mesh")

@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 
 # Collect all data
 
-folders = ["test", "test2", "test3", "test4", "test5", "test6", "test7"]
+folders = ["test", "test2", "test3", "test4", "test5", "test6", "test7", "test8"]
 dest_folder_path = os.path.join(os.getcwd(), "all_record")
 rec = {}
 
@@ -69,7 +69,7 @@ for n_max in rec.keys():
         density = [rec[n_max][p][i]/trials_done for i in range(1, n_max+1)]
         plt.plot(range(1, n_max+1), density, label = f"p = {p}")
     
-    plt.ylim([0.0, max_density])
+    # plt.ylim([0.0, max_density])
     plt.legend()
     plt.savefig(os.path.join(dest_folder_path, f"n_max = {n_max}.png"))
     plt.close()
