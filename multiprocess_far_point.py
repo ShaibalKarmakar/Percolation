@@ -35,7 +35,7 @@ class Graph:
                 if max(abs(a), abs(b), abs(c)) <= self.n:
                     if random.random() <= p:
                         adj_dict[self.vertex_dict[vertex]].append(self.vertex_dict[nbr])
-                        # adj_dict[self.vertex_dict[nbr]].append(self.vertex_dict[vertex])
+                        adj_dict[self.vertex_dict[nbr]].append(self.vertex_dict[vertex])
         return adj_dict
     
     def dfs(self, adj_dict):
